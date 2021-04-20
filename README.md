@@ -52,3 +52,21 @@ git --version
 git clone https://github.com/duizendstra/run-my-code.git
 ```
 
+
+### Docker
+docker run busybox date
+gcloud auth configure-docker
+
+gcloud services enable cloudbuild.googleapis.com
+gcloud builds submit --tag gcr.io/$PROJECT_ID/hello-deventer:latest
+
+### Google Kubernetes Engine
+gcloud services enable container.googleapis.com
+gcloud container clusters create hello-deventer --num-nodes=1
+gcloud container clusters get-credentials hello-deventer
+kubectl create deployment hello-deventer --image=gcr.io/$PROJECT_ID/hello-deventer:latest
+kubectl expose deployment hello-deventer --type LoadBalancer --port 80 --target-port 5000
+kubectl get pods
+kubectl get service hello-deventer
+kubectl delete service hello-deventer
+gcloud container clusters delete hello-deventer
