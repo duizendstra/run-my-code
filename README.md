@@ -45,9 +45,10 @@ gcloud compute instances create hello-deventer --image-family=debian-10 --image-
 ```
 
 ```
+gcloud compute ssh hello-deventer
 sudo apt update
 sudo apt install git
 git --version
-sudo apt install python3-pip
+git clone https://github.com/duizendstra/run-my-code.git
 ```
 
