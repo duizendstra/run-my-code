@@ -29,3 +29,25 @@ gcloud services list
 ```
 gcloud compute images list
 ```
+
+```
+export REGION=europe-west3
+gcloud config set compute/region $REGION
+```
+
+```
+export ZONE=europe-west3-a
+gcloud config set compute/zone $ZONE
+```
+
+```
+gcloud compute instances create hello-deventer --image-family=debian-10 --image-project=debian-cloud --tags http-server,https-server
+```
+
+```
+sudo apt update
+sudo apt install git
+git --version
+sudo apt install python3-pip
+```
+
