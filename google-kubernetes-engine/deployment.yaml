@@ -1,0 +1,26 @@
+# This file configures the hello-world app which serves public web traffic.
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hello-deventer-gke
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: hello-deventer
+  template:
+    metadata:
+      labels:
+        app: hello-deventer
+    spec:
+      containers:
+      - name: hello-deventer
+        # Replace $PROJECT_ID with your project ID
+        image: gcr.io/$PROJECT_ID/hello-deventer:latest
+        # This app listens on port 8080 for web traffic by default.
+        ports:
+        - containerPort: 8080
+        imagePullPolicy: Always
+        env:
+          - name: PORT
+            value: "8080"
